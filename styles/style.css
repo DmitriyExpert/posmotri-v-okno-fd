@@ -1,42 +1,197 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  block-size: 100%;
+}
+
+.page {
+  inline-size: 1200px;
+  block-size: 100%;
+  margin: auto;
+  color: #fff;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 18px;
+  background-color: #1b1919;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+li,
+blockquote,
+fieldset,
+button,
+input {
+  margin: 0;
+  padding: 0;
+  margin-inline: 0px;
+  line-height: 1;
+  border: none;
+}
+
+button {
+  font: inherit;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Oswald, sans-serif;
+  font-weight: 700;
+}
+
+img {
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  }
+
+/* Кастомный скроллбар */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgb(217 217 217 / 10%);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #D9D9D9;
+}
+
 
 /* Основная стилизация */
 
 .page {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .content {
   display: grid;
-  grid-template-areas: "result details";
-  margin: 0 auto;
-  padding: 133px 0px 0px;
+  grid-template-columns: 1fr min-content;
   column-gap: 30px;
   max-width: 1140px;
   width: 100%;
+  min-height: 534px;
 }
 
 .result {
-  grid-area: result;
-  max-width: 100%;
   display: flex;
   flex-direction: column;
   row-gap: 16px;
-  padding-top: 78px;
+  justify-content: end;
+  max-width: 711px;
+  width: 100%;
+}
+
+.result__video-container {
+  max-width: 100%;
+  width: 100%;
+  max-height: 386px;
 }
 
 .result__video {
-  max-width: 711px;
+  max-width: 100%;
   width: 100%;
-  min-height: 386px;
+  height: 100%;
+  object-fit: cover;
 }
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.search-form__fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  max-width: 225px;
+  width: 100%;
+} 
+
+.search-form__fieldset-title {
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.search-form__textfield {
+  background-color: transparent;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  padding: 6px 0px;
+  max-width: 100%;
+  width: 100%;
+}
+
+.search-form__textfield::placeholder {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+}
+
+
+.button {
+  background-color: transparent;
+  border: 1px #ffffff solid;
+  color: #ffffff;
+  padding: 7px 0px;
+  font-weight: 700;
+}
+
+.search-form__submit-button {
+  max-width: 194px;
+  align-self: flex-end;
+  width: 100%;
+}
+
 
 .content__details {
   display: flex;
   flex-direction: column;
-  row-gap: 26px;
-  grid-column: 8/11;
-  grid-area: details;
-  max-width: 399px;
+  justify-content: space-between;
+  max-width: 100%;
+  width: 100%;
+  justify-self: end;
 }
 
 .title {
@@ -49,17 +204,17 @@
   color: #545050;
 }
 
-.search-form {
-  display: flex;
-  justify-content: space-between;
-}
-
 .content__list-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
   max-height: 298px;
   overflow: auto;
   max-width: 100%;
   width: 100%;
+  padding: 2px 3px 2px 2px;
 }
+
 
 
 
@@ -68,7 +223,7 @@
 .content__list {
   display: flex;
   flex-direction: column;
-  row-gap: 30px;
+  row-gap: 24px;
 }
 
 .content__video-card {
@@ -79,16 +234,20 @@
 .content__video-card-description-container {
   display: flex;
   flex-direction: column;
+  row-gap: 6px;
+  max-width: 198px;
 
 }
 
 .content__video-card-title {
   text-transform: uppercase;
   font-size: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .content__video-card-description {
-  font-size: 18px;
   font-weight: 400;
 }
 
